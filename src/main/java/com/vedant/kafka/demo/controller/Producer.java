@@ -20,8 +20,7 @@ public class Producer {
 
     @GetMapping("{message}")
     public HttpEntity produce(@PathVariable("message") String message){
-        User user = new User();
-        user.setMessage(message);
+        User user = new User("Vedant", 1, message);
         kafkaTemplate.send(TOPIC, user);
         return new HttpEntity(message);
     }
