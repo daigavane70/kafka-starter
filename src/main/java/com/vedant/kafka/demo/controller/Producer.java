@@ -18,7 +18,12 @@ public class Producer {
 
     private static final String TOPIC = "test";
 
-    @GetMapping("{message}")
+    @GetMapping("/test")
+    public HttpEntity test(){
+        return new HttpEntity<>("HelloÏ");
+    }
+
+    @GetMapping("/test/{message}")
     public HttpEntity produce(@PathVariable("message") String message){
         User user = new User("Vedant", 1, message);
         kafkaTemplate.send(TOPIC, user);
